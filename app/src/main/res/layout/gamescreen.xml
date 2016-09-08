@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextureView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textureView"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/button7"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Board detected"
+        android:id="@+id/checkBox"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_alignStart="@+id/textureView"
+        android:layout_toStartOf="@+id/button7"
+        android:checked="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/scaled"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="60dp"
+        android:visibility="invisible" />
+</RelativeLayout>
