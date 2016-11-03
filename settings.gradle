@@ -1,2 +1,2 @@
-include ':app'
+include ':game'
 include ':openCVLibrary310'

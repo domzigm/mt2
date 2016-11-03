@@ -6,6 +6,3 @@
 .DS_Store
 /build
 /captures
-/openCVLibrary310/build
-/app/build
-/app/src/libs

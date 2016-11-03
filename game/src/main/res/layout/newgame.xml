@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Spieler 1"
+        android:id="@+id/textView12"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_below="@+id/playerCount"
+        android:layout_alignParentStart="true"
+        android:textIsSelectable="true"
+        android:textSize="18dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerCount"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:spinnerMode="dropdown"
+        android:layout_toStartOf="@+id/radioGroup"
+        android:gravity="left"
+        android:textAlignment="gravity"
+        android:layout_alignEnd="@+id/radioGroup" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/namePlayer1"
+        android:layout_below="@+id/textView12"
+        android:layout_alignStart="@+id/textView12" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Spieler 2"
+        android:id="@+id/textView13"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/namePlayer1"
+        android:layout_alignStart="@+id/namePlayer2"
+        android:textSize="18dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/namePlayer2"
+        android:layout_below="@+id/textView13"
+        android:layout_alignLeft="@+id/namePlayer1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Spieler 3"
+        android:id="@+id/textView14"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/namePlayer2"
+        android:layout_alignStart="@+id/namePlayer3"
+        android:textSize="18dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/namePlayer3"
+        android:layout_below="@+id/textView14"
+        android:layout_alignLeft="@+id/namePlayer2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Spieler 4"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/namePlayer3"
+        android:layout_alignLeft="@+id/namePlayer2"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/namePlayer4"
+        android:layout_below="@+id/textView15"
+        android:layout_alignLeft="@+id/namePlayer2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weiter"
+        android:id="@+id/bStartGame"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="false"
+        android:layout_marginRight="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abbrechen"
+        android:id="@+id/bStartCancel"
+        android:layout_alignTop="@+id/bStartGame"
+        android:layout_alignStart="@+id/namePlayer4" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/namePlayer1"
+        android:layout_alignBottom="@+id/namePlayer4"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/playerCount">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Langes Spiel"
+            android:id="@+id/radioButton"
+            android:checked="false"
+            android:layout_above="@+id/textView13"
+            android:layout_alignStart="@+id/radioShort" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kurzes Spiel"
+            android:id="@+id/radioButton2"
+            android:checked="true"
+            android:layout_below="@+id/playerCount"
+            android:layout_alignEnd="@+id/bStartCancel" />
+    </RadioGroup>
+
+</RelativeLayout>
