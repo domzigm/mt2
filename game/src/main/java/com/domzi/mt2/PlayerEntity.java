@@ -1,110 +1,133 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2;
 
+import android.util.Log;
+
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * Created by M43734 on 22.07.2016.
- */
 public class PlayerEntity {
 
     private int entityIndex;
     private String entityName;
 
-    private int strength;
-    //private int level;
+    PlayerAttributes m_attributes;
+    LinkedList<String> m_changedAttrList;
 
-    final static int maximumLevel = 10;
-    final static int minimumLevel = -10;
-    final static int maximumStrength = 12;
-    final static int minimumStrength = 0;
+    private static final String TAG = "PlayerEntity";
 
-    static final String[] PlayerNames = {"Mali", "Ari", "Inc", "Mouz"};
-
-    Map<String, Number> attributes;
-
-    public PlayerEntity(int index)
+    /**
+     * Create an entity object for a player
+     * @param index Id of the player
+     * @param playerName Name of the player
+     */
+    public PlayerEntity(int index, String playerName)
     {
         entityIndex = index;
-        entityName = PlayerNames[index];
+        entityName = playerName;
 
-        strength = 0;
-//        level = 1;
-
-        attributes = new HashMap<>();
-        attributes.put("strength", 0);
-        attributes.put("level", 1);
-
-        Number num = attributes.get("strength");
-        num = num.intValue() + 1;
-        attributes.put("strength", num);
-    }
-
-    private int getAttr(String AttribString)
-    {
-        return attributes.get(AttribString).intValue();
-    }
-
-    private void setAttr(String AttribString, int value)
-    {
-        attributes.put(AttribString, value);
+        // Todo: Attributes should be parsed from json file!
+        final int maximumLevel = 24;
+        final int minimumLevel = 0;
+        final int maximumStrength = 12;
+        final int minimumStrength = 0;
+        m_attributes.addAttribute("strength", "str.ogg", 0, minimumStrength, maximumStrength);
+        m_attributes.addAttribute("level", "lvl.ogg", 0, minimumLevel, maximumLevel);
     }
 
     /**
-     * Increase the player level unless it's at the maximum level already
+     * Get the value of an attribute
+     * @param AttribString Name of the attribute
+     * @return Value of the attribute
      */
-    public void increaseLevel()
-    {
-        if(getAttr("level") < maximumLevel) {
-            setAttr("level", getAttr("level") + 1);
+    public int getAttr(String AttribString) {
+        int returnVal = -1;
+        try {
+            returnVal =  m_attributes.getAttribValue(AttribString);
         }
-    }
-
-    /**
-     * Decrease the player level unless it's at the minimum level already
-     */
-    public void decreaseLevel()
-    {
-        if(getAttr("level") > minimumLevel) {
-            setAttr("level", getAttr("level") - 1);
+        catch(Exception e) {
+            Log.e(TAG, "Tried to get non-existing attribute");
         }
+        return returnVal;
     }
 
     /**
-     * Return the current level
-     * @return The current Level
+     * Set the value of an attribute
+     * @param AttribString Name of the attribute
+     * @param value New value of the attribute
+     * @return The new verified value of the attribute
      */
-    public int getLevel()
+    public int setAttr(String AttribString, int value)
     {
-        return getAttr("level");
-    }
-
-    /**
-     * Increase the player strength unless it's at the maximum level already
-     */
-    public void increaseStrength()
-    {
-        if(strength < maximumStrength) {
-            strength++;
+        int returnVal = -1;
+        try {
+            returnVal =  m_attributes.setAttribValue(AttribString, value);
         }
-    }
-
-    /**
-     * Decrease the player level unless it's at the minimum level already
-     */
-    public void decreaseStrength()
-    {
-        if(strength > minimumStrength) {
-            strength--;
+        catch(Exception e) {
+            Log.e(TAG, "Tried to set non-existing attribute");
         }
+        return returnVal;
     }
 
     /**
-     * Return the current strength
-     * @return The current strength
+     * Get the audio file of an attribute
+     * @param AttribString The attribute
+     * @return Filename of the audio file
      */
-    public int getStrength()
+    public String getAudioFile(String AttribString)
     {
-        return strength;
+        String returnVal = null;
+        try {
+            Object userData =  m_attributes.getUserData(AttribString);
+            if(userData instanceof String) {
+                returnVal = (String)userData;
+            }
+            else {
+                Log.e(TAG, "Userdata type miss-match");
+            }
+        }
+        catch(Exception e) {
+            Log.e(TAG, "Tried to get non-existing attribute");
+        }
+        return returnVal;
+    }
+
+    /**
+     * Parse a command string and execute operations accordingly
+     * Each modified attribute will be stored until the next call
+     * @param cmd The command string to be parsed
+     */
+    public void parseStringSimple(String cmd)
+    {
+        m_changedAttrList.clear();
+        String tokens[] = cmd.toLowerCase().trim().split("\\s*,\\s*");
+
+        for(String token : tokens) {
+            int pos = 0;
+
+            if(-1 != (pos = token.indexOf("+"))) {
+                // Found positive number
+            }
+            else if(-1 != (pos = token.indexOf("-"))) {
+                // Found negative number
+            }
+
+            if(-1 != pos) {
+                String attribute = token.substring(0, pos);
+                int modifier = Integer.parseInt(token.substring(pos));
+                int value = getAttr(attribute);
+                if(-1 != value) {
+                    value = value + modifier;
+                    setAttr(attribute, value);
+                    m_changedAttrList.addLast(attribute);
+                }
+            }
+        }
     }
 }

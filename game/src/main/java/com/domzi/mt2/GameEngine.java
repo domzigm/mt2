@@ -1,3 +1,9 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2;
 
 import android.app.Activity;
@@ -18,10 +24,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.json.*;
 
-/**
- * Created by M43734 on 22.07.2016.
- */
-
 /*
 
 Gamescreen is loaded by GUI.
@@ -37,6 +39,7 @@ GameEngine does calibration, tracking of players, managing board fields and even
 
 public class GameEngine implements Runnable {
 
+    static final String[] PlayerNames = {"Mali", "Ari", "Inc", "Mouz"};
     public final static int MAXPLAYERS = 4;
 
     private PlayerEntity players[] = new PlayerEntity[MAXPLAYERS];
@@ -82,7 +85,7 @@ public class GameEngine implements Runnable {
         m_Board = new Board(res);
 
         for(int i=0; i<players.length; i++) {
-            players[i] = new PlayerEntity(i);    // Todo: Pass value by constructor...
+            players[i] = new PlayerEntity(i, PlayerNames[i]);    // Todo: Pass value by constructor...
         }
 
         m_imageEngine = new NativeInterface();

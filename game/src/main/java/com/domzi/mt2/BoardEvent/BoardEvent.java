@@ -1,11 +1,14 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2.BoardEvent;
 
 import com.domzi.mt2.GameEngine;
 import com.domzi.mt2.PlayerEntity;
 
-/**
- * Created by M43734 on 22.07.2016.
- */
 public class BoardEvent {
 
     // Abstract Parent class to all events that can happen on this field
@@ -23,9 +26,9 @@ public class BoardEvent {
 
     public void eval(PlayerEntity pEntity)
     {
-        pEntity.decreaseLevel();
-        pEntity.increaseLevel();
-        pEntity.decreaseStrength();
-        pEntity.increaseStrength();
+        pEntity.parseStringSimple("strength+10");
+        pEntity.getAttr("strength");
+        pEntity.setAttr("strength", 5);
+        pEntity.getAttr("strength");
     }
 }
