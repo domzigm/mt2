@@ -1,3 +1,9 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2;
 
 import android.content.res.Resources;
@@ -19,9 +25,6 @@ import org.json.JSONException;
 import java.io.File;
 import java.util.LinkedList;
 
-/**
- * Created by M43734 on 22.07.2016.
- */
 public class Board {
 
     LinkedList<BoardEvent> usedEvents;    // Events that only occur once and have been used

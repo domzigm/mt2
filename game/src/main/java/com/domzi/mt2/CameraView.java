@@ -1,11 +1,14 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.core.Mat;
 
-/**
- * Created by M43734 on 28.07.2016.
- */
 public class CameraView  implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private Mat rgbaImage;

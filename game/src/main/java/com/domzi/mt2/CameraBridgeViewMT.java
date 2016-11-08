@@ -1,3 +1,9 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2;
 
 import android.content.Context;
@@ -10,9 +16,6 @@ import org.opencv.core.Size;
 import java.util.List;
 import java.lang.Math.*;
 
-/**
- * Created by M43734 on 02.09.2016.
- */
 public abstract class CameraBridgeViewMT extends CameraBridgeViewBase implements SurfaceHolder.Callback {
 
     public CameraBridgeViewMT(Context context, AttributeSet attrs) {

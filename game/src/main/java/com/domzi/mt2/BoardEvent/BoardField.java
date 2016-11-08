@@ -1,3 +1,9 @@
+/*
+ *
+ * (c) domzigm 2016 - GPLv3
+ * https://github.com/domzigm/mt2
+ *
+ */
 package com.domzi.mt2.BoardEvent;
 
 import android.util.Log;
@@ -7,9 +13,6 @@ import com.domzi.mt2.GameEngine;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * Created by M43734 on 22.07.2016.
- */
 public class BoardField {
 
     // Every BoardField describes a field on the board itself
